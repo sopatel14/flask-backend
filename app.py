@@ -1,15 +1,14 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/api/hello', methods=['GET'])
+@app.route('/')
+def home():
+    return "Backend API is running successfully!"
+
+@app.route('/api/hello')
 def hello():
-    return jsonify({"message": "Hello from Flask backend!"})
+    return {"message": "Hello from Flask API"}
 
-@app.route('/api/submit', methods=['POST'])
-def submit():
-    data = request.get_json()
-    return jsonify({"received": data}), 200
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
