@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 5000:5000 flask-backend'
+                sh 'docker run -d --name flask-backend -p 5000:5000 flask-backend'
+
             }
         }
     }
